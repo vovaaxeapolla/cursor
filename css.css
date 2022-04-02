@@ -7,6 +7,39 @@ body{
     overflow: hidden;
 }
 
+#preloader{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    background: transparent;
+    z-index: 1000;
+}
+
+#preloader::after{
+    content: "";
+    position: fixed;
+    background: #eee;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) rotate(45deg);
+    z-index: 1000;
+    animation:preloader 2s ease-out;
+}
+
+@keyframes preloader {
+    0%{
+        width: 200vw;
+        height: 200vw;
+        transform: translate(-50%,-50%) rotate(45deg);
+    }
+    100%{
+        width: 0;
+        height: 0;
+        transform: translate(-50%,-50%) rotate(720deg);
+    }
+}
+
+
 .body-wrapper{
     position: relative;
     z-index: 10;
@@ -20,13 +53,30 @@ body{
 }
 
 #cursor{
-    width: 16px; 
-    height: 16px; 
-    position: absolute; 
+    width: 8px; 
+    height: 8px; 
+    background: #eee;
+    left: 50%;
+    top: 50%;
+}
+
+#circle{
+    content: "";
+    width: 32px;
+    height: 32px;
+    border: 2px solid #eee;
+    left: 50%;
+    top: 50%;
+    transition: all .2s ease-out;
+    display: none;
+}
+
+#cursor, #circle{
     z-index: 100; 
+    position: absolute;
     border-radius: 50%;
     box-sizing: border-box;
     transform: translate(-50%, -50%);
     pointer-events: none;
-    background: #eee;
+    box-shadow: 0 0 8px 0 #eee;
 }
